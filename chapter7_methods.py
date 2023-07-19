@@ -29,4 +29,70 @@ print('browning'.capitalize())
 # The general form of a method call is as follows:
 # <<expression>>.<<method_name>>(<<arguments>>)
 
-# Any expression can be used as long as it evaluates to the correct type.
+# Any expression can be used as long as it evaluates to the correct type:
+('TTA' + 'G' * 3).count('T')
+
+## Exploring String Methods ***********************************************************************
+
+# Method calls look almost like function calls, except we need an object of the type associated
+# with the method.
+
+# String method startswith() takes a string argument and returns a bool indicating whether the 
+# called string begins with the given string argument
+print('species'.startswith('a'))
+print('species'.startswith('spe'))
+str.startswith('species', 'spe')
+
+# There's also an endswith() method:
+print('species'.endswith('a'))
+print('species'.endswith('es'))
+
+# Sometimes strings have extra whitespace at the ends. There are methods that can remove the 
+# extra whitespace characters:
+compound = '    \n Methyl \n butanol   \n'
+compound.lstrip()    # left side
+compound.rstrip()    # right side
+compound.strip()     # both sides
+
+# Here's a method that swaps lower case to upper case and vice-versa:
+print('cOMPUTER sCIENCE'.swapcase())
+
+# Here's how we can substitute a series of strings into a format string:
+print('"{0}" is derived from "{1}"'.format('none', 'no one'))
+print('"{0}" is derived from the {1} "{2}"'.format('Etymology', 'Greek', 'ethos'))
+print('"{0}" is derived from the {2} "{1}"'.format('December', 'decem', 'Latin'))
+
+# We can also specify the number of decimal places to round a float type:
+my_pi = 3.14159
+print('Pi rounded to {0} decimal places is {1:.2f}'.format(2, my_pi))
+
+# It's possible to remove the position numbers, in which case arguments are placed in order:
+print('Pi rounded to {} decimal places is {:.3f}'.format(3, my_pi))
+
+# You can also chain methods as long as the previous ends with an expression:
+print('Computer_Science'.swapcase().endswith('ENCE'))
+
+# Note that most modern programming languages are structured in such a way that the things in the
+# program are objects, and most code in the program consists of methods that use the data stored
+# in those objects.
+
+## Underscores ************************************************************************************
+
+# Any method (or other name) beginning and ending with two underscores is considered special by
+# Python. These methods are typically connected with some particular syntax in Python; use of that 
+# syntax will trigger a method call that describes what is done:
+print('TTA' + 'GGG')         # particular syntax
+print('TTA'.__add__('GGG'))  # associated special method
+
+# Note that programmers almost never call these special methods directly:
+abs(-3)
+(-3).__abs__()
+3 > 5
+3 .__gt__(5)     # Note that the whitespace is required for int and float
+
+# Function objects contain double-underscore variables:
+import math
+math.sqrt.__doc__
+
+# If you call the print function on the variable, it will print the help documentation:
+print(math.sqrt.__doc__)
